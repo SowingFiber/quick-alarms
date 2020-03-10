@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:quick_alarms/constants/UI_Consts.dart';
 import 'package:quick_alarms/constants/dash_screen_list.dart';
 
@@ -14,14 +13,14 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DASHBOARDSCREEN[selectedScreen],
+      body: dashBoardScreen[selectedScreen],
       bottomNavigationBar: BottomNavigationBar(
         selectedIconTheme: IconThemeData(
           color: kSecondaryColor,
         ),
         backgroundColor: kMatteColor,
         currentIndex: selectedScreen,
-        items: BOTTOMBARITEMS,
+        items: bottomBarItems,
         onTap:(value){
           setState(() {
             selectedScreen = value;

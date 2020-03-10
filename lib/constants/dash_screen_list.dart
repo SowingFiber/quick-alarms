@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:quick_alarms/_dashboard/components/widgets/test_widget.dart';
 import 'package:quick_alarms/_dashboard/screens/home.dart';
-import 'package:quick_alarms/constants/UI_Consts.dart';
 import 'package:quick_alarms/constants/text_styles.dart';
 
-var BOTTOMBARITEMS = <BottomNavigationBarItem>[
+var bottomBarItems = <BottomNavigationBarItem>[
   BottomNavigationBarItem(
       icon: Icon(Icons.home),
       title: Text('Home',
@@ -32,7 +30,7 @@ var BOTTOMBARITEMS = <BottomNavigationBarItem>[
   )
 ];
 
-var DASHBOARDSCREEN = <Widget>[
+var dashBoardScreen = <Widget>[
   Home(),
   Test(),
   Test(),

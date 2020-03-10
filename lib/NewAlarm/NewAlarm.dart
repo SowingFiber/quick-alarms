@@ -27,33 +27,27 @@ class NewAlarm extends StatelessWidget {
                   ),
                 ),
                 TextInputGroup(
-                  //TODO: Create a set of examples and randomly pick one
                   exampleString: 'e.g. Yoga Appointment with Sheila',
                   title: 'Alarm Name',
                 ),
                 TextInputGroup(
-                  //TODO: Create a set of examples and randomly pick one
                   exampleString:
                       'e.g. I really need to keep up with yoga classes',
                   title: 'Alarm Description',
                 ),
                 TextInputGroup(
-                  //TODO: Create a set of examples and randomly pick one
                   exampleString: 'e.g. 6:00 A.M.',
                   title: 'Start Time',
                 ),
                 TextInputGroup(
-                  //TODO: Create a set of examples and randomly pick one
                   exampleString: 'e.g. 5 minutes',
                   title: 'Intervals',
                 ),
                 TextInputGroup(
-                  //TODO: Create a set of examples and randomly pick one
                   exampleString: 'e.g. 15',
                   title: 'Number of Alarms',
                 ),
                 TextInputGroup(
-                  //TODO: Create a set of examples and randomly pick one
                   exampleString: 'e.g. Daily, Monday - Friday, etc.',
                   title: 'Repeat',
                 ),
