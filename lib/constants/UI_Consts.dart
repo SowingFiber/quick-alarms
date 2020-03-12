@@ -7,6 +7,7 @@ const kSecondaryColor = Color(0xffbe8abf);
 const kSecondaryDarkColor = Color(0xff7045af);
 const kAccentColor = Color(0xffe14594);
 const kMatteColor = Color(0xff303030);
+const kCardColor = Color(0xff454545);
 const kSuspendedColor = Color(0xff888888);
 const kSurfaceFont = Color(0xff232323);
 const kSurfacePaleRed = Color(0xffd45d79);

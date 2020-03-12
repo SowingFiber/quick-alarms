@@ -13,64 +13,70 @@ class Graph extends StatefulWidget {
 
 class _GraphState extends State<Graph> {
   var database;
-  var fido;
   var dogs;
   var value = 1;
   var mydogs;
+  var name;
 
   @override
   void initState() {
-    setState(() {
-      value = 33;
-    });
+    saveDogs(Dog.makeDogs());
+    value = 33;
+    getShitDone();
+    print("Well");
+
     super.initState();
+  }
+
+  getShitDone() async {
+    await getDogs();
   }
 
   @override
   Widget build(BuildContext context) {
+    getDogs();
     database = getAppdatabase();
-    fido = Dog.Dog(
-      id: 0,
-      name: 'Fido',
-      age: 35,
-    );
-    storeDog(fido);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(globalAppName),
       ),
       body: Container(
         child: Column(
-          children: <Widget>[
-            Text(
-              "$value",
-              style: headlineText,
-            ),
-            Text(
-              "$mydogs",
-              style: headlineText,
-            ),
-            RaisedButton(
-              child: Text("Get Dogs"),
-              onPressed: () {
-                setState(() {
-                  value += 1;
-                  getDogs();
-                });
-              },
-            ),
-          ],
+          children: addDogNames()
         ),
       ),
     );
   }
 
-  void storeDog(fido) async {
-    await Dog.insertDog(fido);
+  void storeDog(dog) async {
+    await Dog.insertDog(dog);
   }
 
-  Future<List<Dog.Dog>> getDogs() async {
+  getDogs() async {
     mydogs = await Dog.dogs();
+    setState(() {});
+  }
+
+  Future<String> getName() async {
+    return "Shanu";
+  }
+
+  List<Widget> addDogNames() {
+    var listnames = <Widget>[];
+    if (mydogs != null) {
+      for (var dog in mydogs as List<Dog.Dog>) {
+        listnames.add(Text(dog.name, style: headlineText));
+      }
+      return listnames;
+    }
+    return listnames;
+  }
+
+  void saveDogs(listOfDogs) {
+    for (var dog in listOfDogs) {
+      storeDog(dog);
+    }
   }
 }
 

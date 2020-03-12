@@ -16,10 +16,7 @@ class AlarmCard extends StatefulWidget {
   _AlarmCardState createState() => _AlarmCardState();
 }
 
-
-
 class _AlarmCardState extends State<AlarmCard> {
-
   @override
   void initState() {
     super.initState();
@@ -29,7 +26,7 @@ class _AlarmCardState extends State<AlarmCard> {
   void dispose() {
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,18 +37,19 @@ class _AlarmCardState extends State<AlarmCard> {
           borderRadius: BorderRadius.circular(6.0),
         ),
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 8.0),
-          decoration: BoxDecoration(
-            border: Border(
-              left: BorderSide(
-                color: widget.active
-                    ? widget.snoozed ? kSuspendedColor : kPlainTeal
-                    : kSurfacePaleRed,
-                width: 8.0,
-                style: BorderStyle.solid,
-              ),
-            ),
-          ),
+          padding: EdgeInsets.all(8.0),
+          color: widget.snoozed ? kDirtyPurple : kCardColor,
+          // decoration: BoxDecoration(
+          //   border: Border(
+          //     left: BorderSide(
+          //       color: widget.active
+          //           ? widget.snoozed ? kSuspendedColor : kPlainTeal
+          //           : kSurfacePaleRed,
+          //       width: 8.0,
+          //       style: BorderStyle.solid,
+          //     ),
+          //   ),
+          // ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[

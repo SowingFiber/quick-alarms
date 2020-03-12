@@ -5,7 +5,8 @@ class Dog {
   final int id;
   final String name;
   final int age;
-
+  
+    
   Dog({this.id, this.name, this.age});
 
   // Convert a Dog into a Map. The keys must correspond to the names of the
@@ -19,6 +20,37 @@ class Dog {
   }
 }
 
+makeDogs(){
+  var fido, aido, chiko, kido;
+
+  fido = Dog(
+      id: 0,
+      name: 'Fido',
+      age: 35,
+    );
+
+    chiko = Dog(
+      id: 1,
+      name: 'chiko',
+      age: 35,
+    );
+
+    kido = Dog(
+      id: 2,
+      name: 'kido',
+      age: 35,
+    );
+
+    aido = Dog(
+      id: 3,
+      name: 'aido',
+      age: 35,
+    );
+
+    var listOfDogs = [fido, aido, kido, chiko];
+
+    return listOfDogs;
+}
 // Define a function that inserts dogs into the database
 Future<void> insertDog(Dog dog) async {
   // Get a reference to the database.
@@ -48,6 +80,11 @@ Future<void> insertDog(Dog dog) async {
     dog.toMap(),
     conflictAlgorithm: ConflictAlgorithm.replace,
   );
+}
+
+getMyDogs(var dogs) async{
+  dogs = await dogs();
+  return dogs;
 }
 
 // A method that retrieves all the dogs from the dogs table.

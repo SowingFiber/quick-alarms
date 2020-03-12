@@ -24,48 +24,26 @@ class _DailyAlarmState extends State<DailyAlarm> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Flex(
-              direction: Axis.horizontal,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    'Alarm Description: ',
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    'Need to catch the flight for Bangalore',
-                    style: sublineThinText,
-                  ),
-                ),
-              ],
+            child: Text(
+              'Need to catch the flight for Bangalore',
+              style: sublineThinText,
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 32.0, bottom: 8.0),
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              children: <Widget>[
-                Text(
-                  'Repeat:  ',
-                  style: sublineText,
-                ),
-                Text(
-                  ' None',
-                  style: sublineThinText,
-                ),
-              ],
-            ),
+          SizedBox(
+            height: 20,
           ),
+          addDetails("Repeat", "Monday - Friday"),
+          addDetails("End Time", "10:30 P.M. Today"),
+          addDetails("Intervals", "00 : 05 : 00"),
           Container(
-            margin: EdgeInsets.only(top: 32.0, bottom: 8.0),
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            color: kAccentColor,
+            margin: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Text(
               'Alarms',
-              style: sublineText,
+              style: sublineThinText.copyWith(
+                fontSize: 24,
+              ),
             ),
           ),
           Padding(
@@ -109,4 +87,37 @@ class _DailyAlarmState extends State<DailyAlarm> {
       ),
     );
   }
+}
+
+addDetails(title, detail) {
+  return (Container(
+    margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+    child: Flex(
+      direction: Axis.horizontal,
+      children: <Widget>[
+        Expanded(
+          flex: 2,
+          child: Text(
+            '$title',
+            style: sublineText,
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Text(
+            '  :  ',
+            style: sublineText,
+          ),
+        ),
+        Expanded(
+          flex: 3,
+          child: Text(
+            '$detail',
+            style: sublineThinText,
+          ),
+        ),
+      ],
+    ),
+  ));
 }
