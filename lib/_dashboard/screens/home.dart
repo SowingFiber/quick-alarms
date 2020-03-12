@@ -21,26 +21,7 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           backgroundColor: kMatteColor,
           elevation: 0.0,
-          title: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 48.0),
-                child: Text('Quick Alarm'),
-              ),
-              RoundedButtonLong(
-                buttonName: 'Add',
-                buttonColor: kSecondaryColor,
-                icon: Icons.add,
-                sizeFactor: 0.8,
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => NewAlarm()));
-                },
-              ),
-            ],
-          ),
+          title: Text(globalAppName),
           bottom: TabBar(
             indicatorColor: kSecondaryColor,
             tabs: HOMETABSLIST,

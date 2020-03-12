@@ -14,3 +14,6 @@ const kDirtyPurple = Color(0xff6e5773);
 const kPlainTeal = Color(0xff96d1c7);
 const kPaleOrange = Color(0xffea9085);
 const kLight = Color(0xfffefefe);
+
+//App vars
+const globalAppName = "Quick Alarms";

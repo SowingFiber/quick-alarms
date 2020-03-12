@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_alarms/Screens/Graph/Graph.dart';
 import 'package:quick_alarms/_dashboard/components/widgets/test_widget.dart';
 import 'package:quick_alarms/_dashboard/screens/home.dart';
 import 'package:quick_alarms/constants/text_styles.dart';
@@ -32,7 +33,7 @@ var bottomBarItems = <BottomNavigationBarItem>[
 
 var dashBoardScreen = <Widget>[
   Home(),
-  Test(),
+  Graph(),
   Test(),
   Test(),
 ];

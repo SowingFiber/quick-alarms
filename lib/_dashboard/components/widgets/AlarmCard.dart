@@ -16,7 +16,20 @@ class AlarmCard extends StatefulWidget {
   _AlarmCardState createState() => _AlarmCardState();
 }
 
+
+
 class _AlarmCardState extends State<AlarmCard> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Container(
