@@ -168,20 +168,6 @@ class _NewAlarmState extends State<NewAlarm> {
                     style: sublineText,
                   ),
                 ),
-                CupertinoPicker(
-                  onSelectedItemChanged: (item) {
-                    print(item);
-                  },
-                  itemExtent: 1,
-                  children: <Widget>[
-                    Text("Week Day"),
-                    Text("Week Day"),
-                    Text("Week Day"),
-                    Text("Week Day"),
-                    Text("Week Day"),
-                    Text("Week Day"),
-                  ],
-                ),
               ],
             ),
           ),
