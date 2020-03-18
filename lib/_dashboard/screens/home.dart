@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quick_alarms/NewAlarm/NewAlarm.dart';
-import 'package:quick_alarms/_dashboard/components/widgets/RoundedButtonLong.dart';
 import 'package:quick_alarms/_dashboard/screens/home_components/daily.dart';
 import 'package:quick_alarms/_dashboard/screens/home_components/home_tab_list.dart';
 import 'package:quick_alarms/_dashboard/screens/home_components/overview.dart';
@@ -29,7 +27,7 @@ class _HomeState extends State<Home> {
         ),
         //There are three, [Daily], [Special] & [Overview]
         body: TabBarView(
-          children: <Widget>[DailyAlarm(), Special(), Overview()],
+          children: <Widget>[DailyAlarmPage(), Special(), Overview()],
         ),
       ),
     );

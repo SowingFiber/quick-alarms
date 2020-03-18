@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 const kPrimaryColor = Color(0xff2b3595);
 const kPrimaryDarkColor = Color(0xff182952);
@@ -18,3 +19,17 @@ const kLight = Color(0xfffefefe);
 
 //App vars
 const globalAppName = "Quick Alarms";
+
+//Theme consts
+const kDatePickerTheme = DatePickerTheme(
+  cancelStyle: TextStyle(
+    color: kSurfacePaleRed,
+  ),
+  doneStyle: TextStyle(
+    color: kPlainTeal,
+  ),
+  backgroundColor: kMatteColor,
+  itemStyle: TextStyle(
+    color: kLight,
+  ),
+);

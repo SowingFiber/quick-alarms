@@ -1,69 +1,53 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class Dog {
+class DailyAlarm {
   final int id;
   final String name;
-  final int age;
+  final String description;
+  final String startTime;
+  final String endTime;
+  final String intervalInMinutes;
+  final String repeatMode;
 
-  Dog({this.id, this.name, this.age});
+  DailyAlarm({
+    this.id,
+    this.name,
+    this.description,
+    this.startTime,
+    this.endTime,
+    this.intervalInMinutes,
+    this.repeatMode,
+  });
 
-  // Convert a Dog into a Map. The keys must correspond to the names of the
+  // Convert a DailyAlarm into a Map. The keys must correspond to the names of the
   // columns in the database.
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'name': name,
-      'age': age,
+      'description': description,
+      'startTime': startTime,
+      'endTime': endTime,
+      'intervalInMinutes': intervalInMinutes,
+      'repeatMode': repeatMode,
     };
   }
 }
 
-makeDogs() {
-  var fido, aido, chiko, kido;
-
-  fido = Dog(
-    id: 0,
-    name: 'Fido',
-    age: 35,
-  );
-
-  chiko = Dog(
-    id: 1,
-    name: 'chiko',
-    age: 35,
-  );
-
-  kido = Dog(
-    id: 2,
-    name: 'kido',
-    age: 35,
-  );
-
-  aido = Dog(
-    id: 3,
-    name: 'aido',
-    age: 35,
-  );
-
-  var listOfDogs = [fido, aido, kido, chiko];
-
-  return listOfDogs;
-}
-
 // Define a function that inserts dogs into the database
-Future<void> insertDog(Dog dog) async {
+Future<void> newAlarm(DailyAlarm alarm) async {
   // Get a reference to the database.
   final Database db = await openDatabase(
     // Set the path to the database. Note: Using the `join` function from the
     // `path` package is best practice to ensure the path is correctly
     // constructed for each platform.
-    join(await getDatabasesPath(), 'doggie_database.db'),
+    join(await getDatabasesPath(), 'alarms.db'),
     // When the database is first created, create a table to store dogs.
     onCreate: (db, version) {
       // Run the CREATE TABLE statement on the database.
       return db.execute(
-        "CREATE TABLE dogs(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)",
+        "CREATE TABLE dailyalarms(id INTEGER PRIMARY KEY, name TEXT, description TEXT, startTime TEXT, endTime TEXT, intervalInMinutes TEXT, repeatMode TEXT)",
       );
     },
     // Set the version. This executes the onCreate function and provides a
@@ -76,36 +60,35 @@ Future<void> insertDog(Dog dog) async {
   //
   // In this case, replace any previous data.
   await db.insert(
-    'dogs',
-    dog.toMap(),
+    'dailyalarms',
+    alarm.toMap(),
     conflictAlgorithm: ConflictAlgorithm.replace,
   );
 }
 
-getMyDogs(var dogs) async {
-  dogs = await dogs();
-  return dogs;
-}
-
 // A method that retrieves all the dogs from the dogs table.
-Future<List<Dog>> dogs() async {
+Future<List<DailyAlarm>> get() async {
   // Get a reference to the database.
   final Database db = await openDatabase(
     // Set the path to the database. Note: Using the `join` function from the
     // `path` package is best practice to ensure the path is correctly
     // constructed for each platform.
-    join(await getDatabasesPath(), 'doggie_database.db'),
+    join(await getDatabasesPath(), 'alarms.db'),
   );
 
   // Query the table for all The Dogs.
-  final List<Map<String, dynamic>> maps = await db.query('dogs');
+  final List<Map<String, dynamic>> maps = await db.query('dailyalarms');
 
   // Convert the List<Map<String, dynamic> into a List<Dog>.
   return List.generate(maps.length, (i) {
-    return Dog(
+    return DailyAlarm(
       id: maps[i]['id'],
       name: maps[i]['name'],
-      age: maps[i]['age'],
+      description: maps[i]['description'],
+      startTime: maps[i]['startTime'],
+      endTime: maps[i]['endTime'],
+      intervalInMinutes: maps[i]['intervalInMinutes'],
+      repeatMode: maps[i]['repeatMode'],
     );
   });
 }

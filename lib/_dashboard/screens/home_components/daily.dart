@@ -1,25 +1,30 @@
+import 'package:floating_action_row/floating_action_row.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quick_alarms/NewAlarm/NewAlarm.dart';
 import 'package:quick_alarms/_dashboard/components/widgets/AlarmCard.dart';
-import 'package:quick_alarms/_dashboard/components/widgets/RoundedButtonLong.dart';
 import 'package:quick_alarms/constants/UI_Consts.dart';
 import 'package:quick_alarms/constants/text_styles.dart';
 
-class DailyAlarm extends StatefulWidget {
+class DailyAlarmPage extends StatefulWidget {
   @override
-  _DailyAlarmState createState() => _DailyAlarmState();
+  _DailyAlarmPageState createState() => _DailyAlarmPageState();
 }
 
-class _DailyAlarmState extends State<DailyAlarm> {
+class _DailyAlarmPageState extends State<DailyAlarmPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        padding: EdgeInsets.only(bottom: 84.0),
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Rise & Shine!',
-              style: headlineThinText,
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Rise & Shine!',
+                style: headlineThinText,
+              ),
             ),
           ),
           Padding(
@@ -35,16 +40,8 @@ class _DailyAlarmState extends State<DailyAlarm> {
           addDetails("Repeat", "Monday - Friday"),
           addDetails("End Time", "10:30 P.M. Today"),
           addDetails("Intervals", "00 : 05 : 00"),
-          Container(
-            color: kAccentColor,
-            margin: EdgeInsets.all(16.0),
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Alarms',
-              style: sublineThinText.copyWith(
-                fontSize: 24,
-              ),
-            ),
+          SizedBox(
+            height: 20,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -68,24 +65,68 @@ class _DailyAlarmState extends State<DailyAlarm> {
               ],
             ),
           ),
-          ButtonBar(
-            alignment: MainAxisAlignment.start,
-            children: <Widget>[
-              RoundedButtonLong(
-                icon: Icons.close,
-                buttonColor: kSurfacePaleRed,
-                buttonName: 'Dismiss',
-              ),
-              RoundedButtonLong(
-                icon: Icons.edit,
-                buttonColor: kDirtyPurple,
-                buttonName: 'Edit',
-              ),
-            ],
-          )
         ],
       ),
+      floatingActionButton: FloatingActionRow(
+        height: 56,
+        color: kSecondaryDarkColor,
+        children: <Widget>[
+          FloatingActionRowButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              size: 16,
+              color: kLight,
+            ),
+            onTap: () {},
+          ),
+//          FloatingActionRowDivider(
+//            color: Colors.white,
+//          ),
+          FloatingActionRowButton(
+            icon: Icon(
+              Icons.edit,
+              size: 20,
+              color: kLight,
+            ),
+            onTap: () {},
+          ),
+          FloatingActionRowButton(
+            icon: Icon(
+              Icons.add,
+              size: 24,
+              color: kLight,
+            ),
+            onTap: () {
+              addNewDailyAlarm();
+            },
+          ),
+          FloatingActionRowButton(
+            icon: Icon(
+              Icons.close,
+              size: 24,
+              color: kLight,
+            ),
+            onTap: () {},
+          ),
+//          FloatingActionRowDivider(
+//            color: Colors.white,
+//          ),
+          FloatingActionRowButton(
+            icon: Icon(
+              Icons.arrow_forward_ios,
+              size: 16,
+              color: kLight,
+            ),
+            onTap: () {},
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  void addNewDailyAlarm() {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => NewAlarm()));
   }
 }
 

@@ -32,52 +32,56 @@ class _AlarmCardState extends State<AlarmCard> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 4.0),
       child: Card(
+        color: widget.snoozed ? kDirtyPurple : kCardColor,
         clipBehavior: Clip.hardEdge,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6.0),
         ),
-        child: Container(
-          padding: EdgeInsets.all(8.0),
-          color: widget.snoozed ? kDirtyPurple : kCardColor,
-          // decoration: BoxDecoration(
-          //   border: Border(
-          //     left: BorderSide(
-          //       color: widget.active
-          //           ? widget.snoozed ? kSuspendedColor : kPlainTeal
-          //           : kSurfacePaleRed,
-          //       width: 8.0,
-          //       style: BorderStyle.solid,
-          //     ),
-          //   ),
-          // ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "11:57:05 hh:mm:ss",
-                  style: headlineThinText.copyWith(
-                    fontSize: 24.0,
+        child: InkWell(
+          onTap: () {},
+          child: Container(
+            padding: EdgeInsets.all(8.0),
+//          color: widget.snoozed ? kDirtyPurple : kCardColor,
+            // decoration: BoxDecoration(
+            //   border: Border(
+            //     left: BorderSide(
+            //       color: widget.active
+            //           ? widget.snoozed ? kSuspendedColor : kPlainTeal
+            //           : kSurfacePaleRed,
+            //       width: 8.0,
+            //       style: BorderStyle.solid,
+            //     ),
+            //   ),
+            // ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "hh:mm:ss",
+                    style: sublineText.copyWith(
+                      fontSize: 32.0,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(
-                  "${widget.description}",
-                  style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    fontSize: 12.0,
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(
+                    "${widget.description}",
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 12.0,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                    "State: ${widget.active ? widget.snoozed ? "Snoozed" : "Active" : "User Cancelled"}"),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                      "State: ${widget.active ? widget.snoozed ? "Snoozed" : "Active" : "User Cancelled"}"),
+                ),
+              ],
+            ),
           ),
         ),
       ),
