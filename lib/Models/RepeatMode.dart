@@ -1,6 +1,6 @@
 enum RepeatMode {
-  Monday_Friday,
-  Monday_Saturday,
+  Monday_To_Friday,
+  Monday_To_Saturday,
   All_Week,
   Sunday,
   Monday,

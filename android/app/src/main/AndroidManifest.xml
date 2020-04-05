@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Quick Alarms"
+        android:label="Quick Alarm"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

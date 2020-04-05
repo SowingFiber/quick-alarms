@@ -18,7 +18,7 @@ const kPaleOrange = Color(0xffea9085);
 const kLight = Color(0xfffefefe);
 
 //App vars
-const globalAppName = "Quick Alarms";
+const globalAppName = "Quick Alarm";
 
 //Theme consts
 const kDatePickerTheme = DatePickerTheme(

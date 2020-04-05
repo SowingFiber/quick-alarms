@@ -66,6 +66,32 @@ Future<void> newAlarm(DailyAlarm alarm) async {
   );
 }
 
+//Delete the alarm
+// Define a function that inserts dogs into the database
+Future<void> delete(DailyAlarm alarm) async {
+  // Get a reference to the database.
+  final Database db = await openDatabase(
+    // Set the path to the database. Note: Using the `join` function from the
+    // `path` package is best practice to ensure the path is correctly
+    // constructed for each platform.
+    join(await getDatabasesPath(), 'alarms.db'),
+
+    // Set the version. This executes the onCreate function and provides a
+    // path to perform database upgrades and downgrades.
+    version: 1,
+  );
+
+  // Insert the Dog into the correct table. You might also specify the
+  // `conflictAlgorithm` to use in case the same dog is inserted twice.
+  //
+  // In this case, replace any previous data.
+  await db.delete(
+    'dailyalarms',
+    where: 'startTime = ?',
+    whereArgs: [alarm.startTime],
+  );
+}
+
 // A method that retrieves all the dogs from the dogs table.
 Future<List<DailyAlarm>> get() async {
   // Get a reference to the database.
