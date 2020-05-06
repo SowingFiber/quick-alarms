@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quick_alarms/constants/UI_Consts.dart';
+import 'package:quick_alarms/Config/Colors.dart';
 
 class RoundedButtonLong extends StatefulWidget {
   final IconData icon;
@@ -25,7 +25,7 @@ class _RoundedButtonLongState extends State<RoundedButtonLong> {
     return GestureDetector(
       onTap: widget.onTap,
       child: Container(
-        margin: EdgeInsets.only(left: 8.0 * widget.sizeFactor),
+        margin: EdgeInsets.all(8.0 * widget.sizeFactor),
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Container(
           decoration: BoxDecoration(
@@ -35,6 +35,7 @@ class _RoundedButtonLongState extends State<RoundedButtonLong> {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),

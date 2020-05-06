@@ -1,0 +1,33 @@
+Future<int> create(String itemName, String dateCreated) async{
+    final todo = new Todo(itemName: itemName, dateCreated: dateCreated);
+    //databaseHelper has been injected in the class
+    int id = await _databaseHelper.db.insert(“todos”, todo.toMapWithoutId());
+    return id;
+}
+
+Future<Todo> getItemById(int id) async {
+    //databaseHelper has been injected in the class
+    List<Map> list = await _databaseHelper.db
+        .rawQuery("Select * from todos where id = ?", [id]);
+    if (list.length > 0) {
+      return Todo.fromMap(list[0]);
+    }
+    return null;
+  }
+
+  Future<int> updateItem(Todo item) async {
+    //databaseHelper has been injected in the class
+    return await _databaseHelper.db
+        .update("todos", item.toMap(), where: "id = ?", whereArgs: [item.id]);
+  }
+
+  Future<int> deleteItem(int id) async {
+    return await _databaseHelper.db
+        .delete("todos", where: "id = ?", whereArgs: [id]);
+  }
+
+  void main() async {
+ WidgetsFlutterBinding.ensureInitialized();
+ await Injection.initInjection();
+ runApp(MyApp());
+}

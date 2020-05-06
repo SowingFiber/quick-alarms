@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:quick_alarms/constants/UI_Consts.dart';
-import 'package:quick_alarms/constants/text_styles.dart';
+import 'package:intl/intl.dart';
+import 'package:quick_alarms/Config/Colors.dart';
+import 'package:quick_alarms/Config/Constants.dart';
 
 class AlarmCard extends StatefulWidget {
   final bool active;
   final bool snoozed;
   final description;
+  final Function onLongPress;
+  final time;
   AlarmCard({
     this.active = true,
     this.snoozed = false,
+    this.onLongPress,
+    this.time,
     this.description = "You haven't added a description yet. Tap to Edit.",
   });
 
@@ -39,29 +44,31 @@ class _AlarmCardState extends State<AlarmCard> {
         ),
         child: InkWell(
           onTap: () {},
+          onLongPress: widget.onLongPress,
           child: Container(
             padding: EdgeInsets.all(8.0),
-//          color: widget.snoozed ? kDirtyPurple : kCardColor,
-            // decoration: BoxDecoration(
-            //   border: Border(
-            //     left: BorderSide(
-            //       color: widget.active
-            //           ? widget.snoozed ? kSuspendedColor : kPlainTeal
-            //           : kSurfacePaleRed,
-            //       width: 8.0,
-            //       style: BorderStyle.solid,
-            //     ),
-            //   ),
-            // ),
+            // color: widget.snoozed ? kDirtyPurple : kCardColor,
+            decoration: BoxDecoration(
+              border: Border(
+                left: BorderSide(
+                  color: widget.active
+                      ? widget.snoozed ? kSuspendedColor : kPlainTeal
+                      : kSurfacePaleRed,
+                  width: 8.0,
+                  style: BorderStyle.solid,
+                ),
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "hh:mm:ss",
+                    "${todayDate(DateTime.parse(widget.time))}",
+                    // widget.time,
                     style: sublineText.copyWith(
-                      fontSize: 32.0,
+                      fontSize: 24.0,
                     ),
                   ),
                 ),
@@ -86,5 +93,13 @@ class _AlarmCardState extends State<AlarmCard> {
         ),
       ),
     );
+  }
+
+  todayDate(time) {
+    var now = time;
+    var formatter = new DateFormat('dd/MM/yyyy');
+    String formattedTime = DateFormat('h:mm a').format(now);
+    String formattedDate = formatter.format(now);
+    return "$formattedTime\n$formattedDate";
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quick_alarms/constants/text_styles.dart';
+import 'package:quick_alarms/Config/Constants.dart';
 
 class Test extends StatefulWidget {
   @override
@@ -10,7 +10,11 @@ class _TestState extends State<Test> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(child: Text('Testing', style: headlineText,)),
+      child: Center(
+          child: Text(
+        'Testing',
+        style: headlineText,
+      )),
     );
   }
 }

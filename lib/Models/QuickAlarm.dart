@@ -1,9 +1,9 @@
-class Dog {
+class QuickAlarm {
   final int id;
   final String name;
-  final String age;
+  final String time;
 
-  Dog({this.id, this.name, this.age});
+  QuickAlarm({this.id, this.name, this.time});
 
   ///
   ///Map Methods
@@ -12,7 +12,7 @@ class Dog {
   Map<String, dynamic> toMapWithoutId() {
     final map = new Map<String, dynamic>();
     map["name"] = name;
-    map["age"] = age;
+    map["time"] = time;
     return map;
   }
 
@@ -20,11 +20,14 @@ class Dog {
     final map = new Map<String, dynamic>();
     map["id"] = id;
     map["name"] = name;
-    map["age"] = age;
+    map["time"] = time;
     return map;
   }
 
   //to be used when converting the row into object
-  factory Dog.fromMap(Map<String, dynamic> data) =>
-      new Dog(id: data['id'], name: data['name'], age: data['age']);
+  factory QuickAlarm.fromMap(Map<String, dynamic> data) => new QuickAlarm(
+        id: data['id'],
+        name: data['name'],
+        time: data['time'],
+      );
 }
